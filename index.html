@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MotorMarket - Bienvenido</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* General Reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      text-align: center;
+      overflow-x: hidden; /* Eliminar desplazamiento horizontal */
+      height: 100vh; /* Asegura que la página ocupe todo el alto de la ventana */
+      overflow-y: hidden; /* Eliminar desplazamiento vertical */
+    }
+
+    /* Barra de navegación */
+    #nav-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 25px;
+      padding: 25px 40px;
+      background-color: #b58770;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    #nav-bar ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 20px;
+    }
+
+    #nav-bar li {
+      margin: 0;
+    }
+
+    #nav-bar a {
+      text-decoration: none;
+      color: white;
+      font-size: 1em;
+      background-color: #b58770;
+    }
+
+    #nav-bar a:hover {
+      background-color: #e67e22;
+      color: #fff;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      transform: translateY(-5px);
+    }
+
+    /* Estilo del botón "Iniciar Proceso de Compra" */
+    .process-btn {
+      padding: 12px 20px;
+      font-size: 1.2em;
+      background-color: #e67e22; /* Naranja brillante */
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .process-btn:hover {
+      background-color: #d68910;
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Contenido de la página */
+    section {
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #cac9c5;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section h2 {
+      font-size: 1.5em;
+      color: #3a502c;
+      margin-bottom: 10px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    section p {
+      font-size: 1.1em;
+      color: #606262;
+      line-height: 1.1;
+    }
+
+    /* Estilos para la galería de autos - diseño horizontal con desplazamiento */
+    #vehicle-gallery {
+      display: flex;
+      gap: 10px;
+      padding: 10px;
+      margin-top: 30px;
+      scroll-behavior: smooth;
+      justify-content: flex-start;
+      overflow-x: auto; /* Permitir desplazamiento horizontal */
+      scroll-snap-type: x mandatory;  /* Asegura que las imágenes se alineen bien */
+    }
+
+    .vehicle-item {
+      background-color: #eae8e8;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      padding: 4px;
+      transition: transform 0.3s ease-in-out;
+      cursor: pointer;
+      width: 290px; /* Ajusta el tamaño según tus necesidades */
+    }
+
+    .vehicle-item:hover {
+      transform: translateY(-10px); /* Efecto al pasar el ratón */
+    }
+
+    .vehicle-image {
+      width: 100%;
+      height: 150px; /* Establecemos una altura constante para las imágenes */
+      object-fit: cover; /* Mantiene la imagen ajustada dentro del contenedor sin distorsión */
+      border-radius: 7px;
+      margin-bottom: 0px;
+    }
+
+    .vehicle-info {
+      text-align: center;
+    }
+
+    .vehicle-info h3 {
+      font-size: 1.2em;
+      color: #4a4848;
+      margin-bottom: 10px;
+    }
+
+    .vehicle-info p {
+      font-size: 1em;
+      color: #717070;
+      margin-bottom: 15px;
+    }
+
+    /* Pie de página */
+    footer {
+      background-color: #e7e6e6;
+      color: white;
+      padding: 15px 0;
+      margin-top: 50px;
+    }
+
+    footer p {
+      font-size: 1em;
+      color: #a5a5a5;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barra de Navegación -->
+  <div id="nav-bar">
+    <ul>
+      <li><a href="register.html">Registrarse</a></li>
+      <li><a href="login.html">Iniciar sesión</a></li>
+      <li><a href="search.html">Buscar vehículos</a></li>
+      <li><a href="gallery.html">Galería</a></li>
+      <li><a href="validacion-doc.html">Documentación</a></li>
+      <li><a href="purchase-process.html">Proceso de Compra</a></li>
+      <li><a href="contacto-agenda.html">Agenda y contacto</a></li>
+      <li><a href="Faq.html">Preguntas frecuentes</a></li>
+    </ul>
+  </div>
+
+  <!-- Encabezado -->
+  <header>
+    <!-- Logo de la página -->
+    <img src="images/logo.png" alt="Logo MotorMarket"> <!-- Asegúrate de tener el logo en la carpeta 'images' -->
+    <h1>Bienvenidos</h1>
+  </header>
+
+  <!-- Contenido de la página -->
+  <section>
+    <h2>Explora y compra vehículos usados con confianza</h2>
+    <p>"La mejor forma de comprar vehículos usados, confiables y a tu medida, con acompañamiento en cada paso, desde la búsqueda hasta la compra, porque tu seguridad y satisfacción son lo primero."</p>
+  </section>
+
+  <!-- Galería de vehículos disponibles -->
+  <section id="vehicle-gallery">
+    <div class="vehicle-item">
+      <img src="images/toyota_corolla.jpg" alt="Vehículo 1" class="vehicle-image">
+      <div class="vehicle-info">
+        <h3>Toyota Corolla 2020</h3>
+        <p>$85,500,000 COP</p>
+      </div>
+    </div>
+    <div class="vehicle-item">
+      <img src="images/toyota_camry.jpg" alt="Vehículo 2" class="vehicle-image">
+      <div class="vehicle-info">
+        <h3>Honda Civic 2019</h3>
+        <p>$55,000,000 COP</p>
+      </div>
+    </div>
+    <div class="vehicle-item">
+      <img src="images/toyota_hilux.jpg" alt="Vehículo 3" class="vehicle-image">
+      <div class="vehicle-info">
+        <h3>Chevrolet Tracker 2020</h3>
+        <p>$70,000,000 COP</p>
+      </div>
+    </div>
+    <div class="vehicle-item">
+      <img src="images/honda_civic.jpg" alt="Vehículo 4" class="vehicle-image">
+      <div class="vehicle-info">
+        <h3>Nissan X-Trail 2021</h3>
+        <p>$75,000,000 COP</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pie de página -->
+  <footer>
+    <p>&copy; 2023 MotorMarket. Todos los derechos reservados.</p>
+  </footer>
+
+</body>
+</html>

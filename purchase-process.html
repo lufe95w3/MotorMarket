@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proceso de Compra - MotorMarket</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Estilos generales */
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    header h1 {
+      font-size: 3.5em;
+      color: #b58770;
+      margin-bottom: 10px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    /* Estilo para la sección de selección de vehículo */
+    .vehicle-selection {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin-top: 40px;
+      width: 80%;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .vehicle-selection h2 {
+      text-align: center;
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    .vehicle-selection label {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .vehicle-selection select {
+      padding: 12px;
+      font-size: 1.2em;
+      width: 100%;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .vehicle-selection .price {
+      font-size: 1.5em;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    /* Estilo para la sección de resumen de pago */
+    .payment-summary {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin-top: 40px;
+      width: 80%;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .payment-summary h2 {
+      text-align: center;
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    .payment-summary .costs,
+    .payment-summary .payment-methods {
+      margin-bottom: 30px;
+    }
+
+    .payment-summary .costs table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .payment-summary .costs th,
+    .payment-summary .costs td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .payment-summary .costs th {
+      background-color: #34495e;
+      color: white;
+    }
+
+    .payment-summary .total {
+      font-size: 1.5em;
+      font-weight: bold;
+      text-align: right;
+      margin-top: 10px;
+    }
+
+    .payment-summary .payment-methods {
+      text-align: center;
+    }
+
+    .payment-summary select {
+      padding: 10px;
+      font-size: 1em;
+      margin-top: 10px;
+      border-radius: 5px;
+      width: 100%;
+    }
+
+    .payment-summary button {
+      padding: 15px 30px;
+      background-color: #e67e22;
+      color: white;
+      border: none;
+      font-size: 1.2em;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .payment-summary button:hover {
+      background-color: #d68910;
+    }
+
+    /* Botón Home en la parte superior derecha */
+    #home-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 10px 20px;
+      background-color: #b58770;
+      color: white;
+      border: none;
+      font-size: 1.2em;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #home-btn:hover {
+      background-color: #b58770;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Botón Home en la parte superior derecha -->
+  <button id="home-btn" onclick="window.location.href='index.html'">Home</button>
+
+  <header>
+    <h1>Proceso de Compra - MotorMarket</h1>
+  </header>
+
+  <!-- Sección de selección de vehículo -->
+  <section class="vehicle-selection">
+    <h2>Selecciona tu vehículo</h2>
+    <label for="vehicle-model">Selecciona el modelo:</label>
+    <select id="vehicle-model">
+      <option value="" selected disabled>Elige un vehículo</option>
+      <option value="Toyota Corolla 2020">Toyota Corolla 2020</option>
+      <option value="Toyota Camry 2020">Toyota Camry 2020</option>
+      <option value="Toyota Hilux 2020">Toyota Hilux 2020</option>
+      <option value="Honda Civic 2018">Honda Civic 2018</option>
+      <option value="Chevrolet Spark 2021">Chevrolet Spark 2021</option>
+      <option value="Chevrolet Tracker 2020">Chevrolet Tracker 2020</option>
+      <option value="Mazda 3 2019">Mazda 3 2019</option>
+      <option value="Nissan Sentra 2017">Nissan Sentra 2017</option>
+      <option value="Nissan X-Trail 2020">Nissan X-Trail 2020</option>
+      <option value="Renault Duster 2020">Renault Duster 2020</option>
+      <option value="Hyundai Tucson 2019">Hyundai Tucson 2019</option>
+      <option value="Hyundai Elantra 2020">Hyundai Elantra 2020</option>
+      <option value="Kia Rio 2020">Kia Rio 2020</option>
+      <option value="Ford EcoSport 2018">Ford EcoSport 2018</option>
+      <option value="BMW X1 2017">BMW X1 2017</option>
+      <option value="BMW X3 2019">BMW X3 2019</option>
+    </select>
+
+    <div id="vehicle-price" class="price">
+      <!-- El precio se mostrará aquí después de seleccionar un vehículo -->
+    </div>
+  </section>
+
+  <!-- Sección de resumen de pago -->
+  <section class="payment-summary">
+    <h2>Resumen de Pago</h2>
+
+    <!-- Desglose de costos -->
+    <div class="costs">
+      <table>
+        <tr>
+          <th>Detalle</th>
+          <th>Costo</th>
+        </tr>
+        <tr>
+          <td>Precio del vehículo</td>
+          <td id="vehicle-cost">$0 COP</td>
+        </tr>
+        <tr>
+          <td>Impuestos (IVA 19%)</td>
+          <td id="tax-cost">$0 COP</td>
+        </tr>
+        <tr>
+          <td>Otros cargos</td>
+          <td id="additional-cost">$0 COP</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Total a pagar -->
+    <div class="total">
+      <p>Total a pagar: <strong id="total-cost">$0 COP</strong></p>
+    </div>
+
+    <!-- Métodos de pago -->
+    <div class="payment-methods">
+      <label for="payment-method">Selecciona un método de pago:</label>
+      <select id="payment-method">
+        <option value="credit-card">Tarjeta de crédito</option>
+        <option value="debit-card">Tarjeta de débito</option>
+        <option value="bank-transfer">Transferencia bancaria</option>
+      </select>
+    </div>
+
+    <!-- Botón de pago -->
+    <button id="pay-now">Realizar Pago</button>
+  </section>
+
+  <script>
+    // Precios y detalles de vehículos
+    const vehiclePrices = {
+      "Toyota Corolla 2020": 70000000,
+      "Toyota Camry 2020": 85000000,
+      "Toyota Hilux 2020": 95000000,
+      "Honda Civic 2018": 55000000,
+      "Chevrolet Spark 2021": 40000000,
+      "Chevrolet Tracker 2020": 70000000,
+      "Mazda 3 2019": 60000000,
+      "Nissan Sentra 2017": 48000000,
+      "Nissan X-Trail 2020": 75000000,
+      "Renault Duster 2020": 55500000,
+      "Hyundai Tucson 2019": 65000000,
+      "Hyundai Elantra 2020": 67000000,
+      "Kia Rio 2020": 45000000,
+      "Ford EcoSport 2018": 50000000,
+      "BMW X1 2017": 120000000,
+      "BMW X3 2019": 160000000
+    };
+
+    // Calcula el precio total
+    function updatePaymentSummary(vehicleModel) {
+      const vehiclePrice = vehiclePrices[vehicleModel] || 0;
+      const tax = vehiclePrice * 0.19; // 19% de IVA
+      const additionalCosts = 2500000; // Otros cargos fijos, por ejemplo
+
+      const totalCost = vehiclePrice + tax + additionalCosts;
+
+      document.getElementById('vehicle-price').textContent = `Precio del vehículo: $${vehiclePrice.toLocaleString()} COP`;
+      document.getElementById('vehicle-cost').textContent = `$${vehiclePrice.toLocaleString()} COP`;
+      document.getElementById('tax-cost').textContent = `$${tax.toLocaleString()} COP`;
+      document.getElementById('additional-cost').textContent = `$${additionalCosts.toLocaleString()} COP`;
+      document.getElementById('total-cost').textContent = `$${totalCost.toLocaleString()} COP`;
+    }
+
+    // Actualiza el resumen de pago cuando se selecciona un vehículo
+    document.getElementById('vehicle-model').addEventListener('change', function () {
+      const selectedModel = this.value;
+      updatePaymentSummary(selectedModel);
+    });
+  </script>
+
+</body>
+</html>

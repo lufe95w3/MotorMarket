@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preguntas Frecuentes - MotorMarket</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* General Reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #f4f4f4, #e0e0e0); /* Fondo degradado suave */
+      color: #333333; /* Texto oscuro */
+      margin: 0;
+      padding: 0;
+      min-height: 100vh; /* Asegura que el fondo cubra toda la pantalla */
+    }
+
+    /* Barra de navegación */
+    #nav-bar {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 30px; /* Espaciado superior */
+    }
+
+    #nav-bar ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    #nav-bar li {
+      margin: 0;
+    }
+
+    #nav-bar a {
+      text-decoration: none;
+      color: #FFC760; /* Naranja suave */
+      font-size: 1em;
+      padding: 12px 25px;
+      background-color: #2C3E50; /* Fondo gris oscuro */
+      border-radius: 30px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    }
+
+    #nav-bar a:hover {
+      background-color: #e0c249; /* Naranja dorado en hover */
+      color: #fff;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra más prominente */
+      transform: translateY(-2px); /* Efecto de elevación */
+    }
+
+    /* Encabezado (Título centralizado debajo de los botones) */
+    header {
+      text-align: center;
+      margin-top: 50px; /* Espaciado superior */
+      margin-bottom: 30px; /* Espaciado inferior */
+    }
+
+    h1 {
+      font-size: 3.5em;
+      color: #b58770; /* Gris oscuro suave para un contraste mejor */
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2); /* Sombra sutil para resaltar */
+      letter-spacing: 2px; /* Espaciado para un toque elegante */
+      margin-bottom: 40px; /* Espaciado inferior */
+    }
+
+    /* Botón Home en la parte superior derecha */
+    #home-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 10px 15px; /* Ajustamos el tamaño del botón */
+      background-color: #b58770;
+      color: white;
+      border: none;
+      font-size: 1.2em;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      width: auto; /* Hacemos el ancho automático para que el botón no se extienda */
+    }
+
+    #home-btn:hover {
+      background-color: #b58770;
+    }
+
+    /* Estilo de las preguntas frecuentes */
+    .faq-section {
+      margin-top: 40px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .faq-section h2 {
+      font-size: 2.5em;
+      color: #3a5c7e;
+      margin-bottom: 20px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .faq {
+      text-align: left;
+      margin-bottom: 20px;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border-radius: 5px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .faq h3 {
+      font-size: 1.4em;
+      color: #b58770;
+      margin-bottom: 10px;
+    }
+
+    .faq p {
+      font-size: 1.1em;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    /* Estilo de los recursos adicionales */
+    .resources-section {
+      margin-top: 40px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .resources-section h2 {
+      font-size: 2.5em;
+      color: #b58770;
+      margin-bottom: 20px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .resources-list {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .resources-list li {
+      font-size: 1.1em;
+      color: #555;
+      margin-bottom: 15px;
+    }
+
+    .resources-list a {
+      text-decoration: none;
+      color: #3498db;
+      font-weight: bold;
+    }
+
+    .resources-list a:hover {
+      color: #e67e22;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Botón Home en la parte superior derecha -->
+  <button id="home-btn" onclick="window.location.href='index.html'">Home</button>
+
+  <!-- Encabezado -->
+  <header>
+    <h1>Preguntas Frecuentes (FAQ)</h1>
+  </header>
+
+  <!-- Sección de Preguntas Frecuentes -->
+  <section class="faq-section">
+    <h2>Preguntas más comunes</h2>
+
+    <div class="faq">
+      <h3>¿Cómo puedo comprar un vehículo en MotorMarket?</h3>
+      <p>En MotorMarket, puedes buscar vehículos, filtrar por características y precios, y contactar con los concesionarios para coordinar la compra.</p>
+    </div>
+
+    <div class="faq">
+      <h3>¿Los vehículos están revisados por expertos?</h3>
+      <p>Sí, todos los vehículos disponibles en MotorMarket han sido revisados por profesionales y cuentan con el historial de mantenimiento disponible.</p>
+    </div>
+
+    <div class="faq">
+      <h3>¿Puedo agendar una prueba de manejo?</h3>
+      <p>¡Claro! Puedes agendar una prueba de manejo a través de nuestra plataforma seleccionando el vehículo que te interesa y eligiendo una fecha y hora disponible.</p>
+    </div>
+
+    <div class="faq">
+      <h3>¿Cómo se asegura la calidad de los vehículos?</h3>
+      <p>MotorMarket trabaja solo con concesionarios verificados que ofrecen vehículos de alta calidad y con historial de mantenimiento transparente.</p>
+    </div>
+
+    <div class="faq">
+      <h3>¿Hay alguna garantía para los vehículos?</h3>
+      <p>La mayoría de los vehículos incluyen garantía del concesionario. Detalles específicos sobre la garantía se pueden consultar directamente con el concesionario.</p>
+    </div>
+  </section>
+
+  <!-- Sección de Recursos -->
+  <section class="resources-section">
+    <h2>Recursos para resolver problemas comunes</h2>
+
+    <ul class="resources-list">
+      <li><a href="#">Guía paso a paso para la compra de vehículos</a></li>
+      <li><a href="#">Preguntas frecuentes sobre financiamiento</a></li>
+      <li><a href="#">Cómo verificar el estado de un vehículo usado</a></li>
+      <li><a href="#">Información sobre garantías y seguros</a></li>
+    </ul>
+  </section>
+
+</body>
+</html>

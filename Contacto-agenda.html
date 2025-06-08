@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto y Agendar Visitas - MotorMarket</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* General Reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #f4f4f4, #e0e0e0); /* Fondo degradado suave */
+      color: #333333; /* Texto oscuro */
+      margin: 0;
+      padding: 0;
+      min-height: 100vh; /* Asegura que el fondo cubra toda la pantalla */
+    }
+
+    /* Barra de navegación */
+    #nav-bar {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 30px; /* Espaciado superior */
+    }
+
+    #nav-bar ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    #nav-bar li {
+      margin: 0;
+    }
+
+    #nav-bar a {
+      text-decoration: none;
+      color: #FFC760; /* Naranja suave */
+      font-size: 1em;
+      padding: 12px 25px;
+      background-color: #2C3E50; /* Fondo gris oscuro */
+      border-radius: 30px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    }
+
+    #nav-bar a:hover {
+      background-color: #e0c249; /* Naranja dorado en hover */
+      color: #fff;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra más prominente */
+      transform: translateY(-2px); /* Efecto de elevación */
+    }
+
+    /* Encabezado (Título centralizado debajo de los botones) */
+    header {
+      text-align: center;
+      margin-top: 50px; /* Espaciado superior */
+      margin-bottom: 30px; /* Espaciado inferior */
+    }
+
+    h1 {
+      font-size: 3.5em;
+      color: #b58770; /* Gris oscuro suave para un contraste mejor */
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2); /* Sombra sutil para resaltar */
+      letter-spacing: 2px; /* Espaciado para un toque elegante */
+      margin-bottom: 40px; /* Espaciado inferior */
+    }
+
+    /* Botón Home en la parte superior derecha */
+    #home-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 10px 15px; /* Ajustamos el tamaño del botón */
+      background-color: #b58770;
+      color: white;
+      border: none;
+      font-size: 1.2em;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      width: auto; /* Hacemos el ancho automático para que el botón no se extienda */
+    }
+
+    #home-btn:hover {
+      background-color: #b58770;
+    }
+
+    /* Formulario de Contacto */
+    #contact-form-section, #calendar-section {
+      margin-top: 15px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    #contact-form-section h2, #calendar-section h2 {
+      color: #2c3e50;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-size: 1.1em;
+      color: #2c3e50;
+      margin-bottom: 1px;
+      display: block;
+    }
+
+    input, textarea, select, button {
+      padding: 7px;
+      font-size: 1em;
+      width: 100%;
+      margin-bottom: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background-color: #FFC760;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #D68910;
+    }
+
+    /* Calendario */
+    .calendar-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .calendar-container input[type="datetime-local"] {
+      font-size: 1em;
+      padding: 1px;
+      width: 100%;
+    }
+
+    .message {
+      margin-top: 0px;
+      font-size: 1em;
+      color: #27ae60;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Botón Home en la parte superior derecha -->
+  <button id="home-btn" onclick="window.location.href='index.html'">Home</button>
+
+  <header>
+    <h1>Agenda y contacto</h1>
+  </header>
+
+  <!-- Calendario para Agendar Visitas -->
+  <section id="calendar-section">
+    <h2>Agendar Visita</h2>
+    <div class="calendar-container">
+      <input type="datetime-local" id="calendar-date-time" required />
+    </div>
+    <button onclick="scheduleVisit()">Agendar Visita</button>
+    <div id="calendar-message" class="message"></div>
+  </section>
+
+  <!-- Formulario de Contacto con Asesor -->
+  <section id="contact-form-section">
+    <h2>Formulario de Contacto</h2>
+    <form id="contact-form">
+      <label for="name">Nombre Completo:</label>
+      <input type="text" id="name" name="name" required placeholder="Tu nombre completo">
+
+      <label for="email">Correo Electrónico:</label>
+      <input type="email" id="email" name="email" required placeholder="Tu correo electrónico">
+
+      <label for="message">Mensaje:</label>
+      <textarea id="message" name="message" required rows="5" placeholder="Escribe tu mensaje aquí"></textarea>
+
+      <button type="submit">Enviar Mensaje</button>
+    </form>
+    <div id="contact-message" class="message"></div>
+  </section>
+
+  <script>
+    // Función para enviar el formulario de contacto
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+
+      if (name && email && message) {
+        document.getElementById('contact-message').innerHTML = 'Gracias por tu mensaje. Te contactaremos pronto.';
+        // Aquí se podría integrar la notificación al correo con una API de servidor
+      } else {
+        document.getElementById('contact-message').innerHTML = 'Por favor, completa todos los campos.';
+      }
+    });
+
+    // Función para agendar una visita
+    function scheduleVisit() {
+      const visitDate = document.getElementById('calendar-date-time').value;
+
+      if (visitDate) {
+        document.getElementById('calendar-message').innerHTML = 'Tu visita ha sido agendada para: ' + visitDate;
+        // Aquí se podría integrar la confirmación por correo utilizando alguna API
+      } else {
+        document.getElementById('calendar-message').innerHTML = 'Por favor, selecciona una fecha y hora.';
+      }
+    }
+  </script>
+
+</body>
+</html>

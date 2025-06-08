@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galería de Vehículos - MotorMarket</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Estilos generales para la galería */
+    #vehicle-images {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+      padding: 20px;
+    }
+
+    .vehicle-image {
+      width: 100%;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .vehicle-image:hover {
+      transform: scale(1.05);
+    }
+
+    .vehicle-info {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .vehicle-info h3 {
+      font-size: 1.3em;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .vehicle-info p {
+      font-size: 1.1em;
+      color: #666;
+    }
+
+    /* Botón Home en la parte superior derecha */
+    #home-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 10px 20px;
+      background-color: #b58770;
+      color: white;
+      border: none;
+      font-size: 1.2em;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #home-btn:hover {
+      background-color: #34495e;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Botón Home en la parte superior derecha -->
+  <button id="home-btn" onclick="window.location.href='index.html'">Home</button>
+
+  <!-- Título de la galería -->
+  <header>
+    <h1>Galería de Vehículos</h1>
+  </header>
+
+  <!-- Galería de vehículos -->
+  <section id="vehicle-images">
+    <!-- Vehículo 1 -->
+    <div class="vehicle-item">
+      <img src="images/toyota_corolla.jpg" alt="Toyota Corolla 2020" class="vehicle-image">
+      <div class="vehicle-info">
+        <h3>Toyota Corolla 2020</h3>
+        <p>Precio: $70,000,000 COP</p>
+      </div>
+    </div>
+
+    <!-- Vehículo 2 -->
+    <div class="vehicle-item">
+      <img src="images/toyota_camry.jpg" alt="Toyota Camry 2020" class="vehicle-image">
+      <div class="vehicle-info">
+        <h3>Toyota Camry 2020</h3>
+        <p>Precio: $85,000,000 COP</p>
+      </div>
+    </div>
+
+    <!-- Vehículo 3 -->
+    <div class="vehicle-item">
+      <img src="images/toyota_hilux.jpg" alt="Toyota Hilux 2020" class="vehicle-image">
+      <div class="vehicle-info">
+        <h3>Toyota Hilux 2020</h3>
+        <p>Precio: $95,000,000 COP</p>
+      </div>
+    </div>
+
+    <!-- Vehículo 4 -->
+    <div class="vehicle-item">
+      <img src="images/honda_civic.jpg" alt="Honda Civic 2018" class="vehicle-image">
+      <div class="vehicle-info">
+        <h3>Honda Civic 2018</h3>
+        <p>Precio: $55,000,000 COP</p>
+      </div>
+    </div>
+
+    <!-- Vehículo 5 -->
+    <div class="vehicle-item">
+      <img src="images/chevrolet_spark.jpg" alt="Chevrolet Spark 2021" class="vehicle-image">
+      <div class="vehicle-info">
+        <h3>Chevrolet Spark 2021</h3>
+        <p>Precio: $40,000,000 COP</p>
+      </div>
+    </div>
+
+    <!-- Vehículo 6 -->
+    <div class="vehicle-item">
+      <img src="images/chevrolet_tracker.jpg" alt="Chevrolet Tracker 2020" class="vehicle-image">
+      <div class="vehicle-info">
+        <h3>Chevrolet Tracker 2020</h3>
+        <p>Precio: $70,000,000 COP</p>
+      </div>
+    </div>
+
+    <!-- Vehículo 7 -->
+    <div class="vehicle-item">
+      <img src="images/mazda_3.jpg" alt="Mazda 3 2019" class="vehicle-image">
+      <div class="vehicle-info">
+        <h3>Mazda 3 2019</h3>
+        <p>Precio: $60,000,000 COP</p>
+      </div>
+    </div>
+
+    <!-- Vehículo 8 -->
+    <div class="vehicle-item">
+      <img src="images/nissan_sentra.jpg" alt="Nissan Sentra 2017" class="vehicle-image">
+      <div class="vehicle-info">
+        <h3>Nissan Sentra 2017</h3>
+        <p>Precio: $48,000,000 COP</p>
+      </div>
+    </div>
+
+    <!-- Vehículo 9 -->
+    <div class="vehicle-item">
+      <img src="images/nissan_xtrail.jpg" alt="Nissan X-Trail 2020" class="vehicle-image">
+      <div class="vehicle-info">
+        <h3>Nissan X-Trail 2020</h3>
+        <p>Precio: $75,000,000 COP</p>
+      </div>
+    </div>
+
+    <!-- Vehículo 10 -->
+    <div class="vehicle-item">
+      <img src="images/renault_duster.jpg" alt="Renault Duster 2020" class="vehicle-image">
+      <div class="vehicle-info">
+        <h3>Renault Duster 2020</h3>
+        <p>Precio: $55,500,000 COP</p>
+      </div>
+    </div>
+
+    <!-- Vehículo 11 -->
+    <div class="vehicle-item">
+      <img src="images/hyundai_tucson.jpg" alt="Hyundai Tucson 2019" class="vehicle-image">
+      <div class="vehicle-info">
+        <h3>Hyundai Tucson 2019</h3>
+        <p>Precio: $65,000,000 COP</p>
+      </div>
+    </div>
+
+    <!-- Vehículo 12 -->
+    <div class="vehicle-item">
+      <img src="images/hyundai_elantra.jpg" alt="Hyundai Elantra 2020" class="vehicle-image">
+      <div class="vehicle-info">
+        <h3>Hyundai Elantra 2020</h3>
+        <p>Precio: $67,000,000 COP</p>
+      </div>
+    </div>
+
+    <!-- Vehículo 13 -->
+    <div class="vehicle-item">
+      <img src="images/kia_rio.jpg" alt="Kia Rio 2020" class="vehicle-image">
+      <div class="vehicle-info">
+        <h3>Kia Rio 2020</h3>
+        <p>Precio: $45,000,000 COP</p>
+      </div>
+    </div>
+
+    <!-- Vehículo 14 -->
+    <div class="vehicle-item">
+      <img src="images/ford_ecosport.jpg" alt="Ford EcoSport 2018" class="vehicle-image">
+      <div class="vehicle-info">
+        <h3>Ford EcoSport 2018</h3>
+        <p>Precio: $50,000,000 COP</p>
+      </div>
+    </div>
+
+    <!-- Vehículo 15 -->
+    <div class="vehicle-item">
+      <img src="images/bmw_x1.jpg" alt="BMW X1 2017" class="vehicle-image">
+      <div class="vehicle-info">
+        <h3>BMW X1 2017</h3>
+        <p>Precio: $120,000,000 COP</p>
+      </div>
+    </div>
+
+    <!-- Vehículo 16 -->
+    <div class="vehicle-item">
+      <img src="images/bmw_x3.jpg" alt="BMW X3 2019" class="vehicle-image">
+      <div class="vehicle-info">
+        <h3>BMW X3 2019</h3>
+        <p>Precio: $160,000,000 COP</p>
+      </div>
+    </div>
+
+  </section>
+
+</body>
+</html>

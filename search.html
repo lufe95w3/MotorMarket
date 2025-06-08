@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buscar Vehículos - MotorMarket</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* General Reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      text-align: center;
+    }
+
+    h1, h2 {
+      color: #b58770;
+      margin: 30px 0;
+    }
+
+    h3 {
+      font-size: 1.3em;
+      margin-bottom: 10px;
+    }
+
+    h4 {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+
+    /* Barra de navegación */
+    #nav-bar {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      background-color: #34495e;
+      padding: 15px;
+      border-radius: 30px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    #nav-bar a {
+    text-decoration: none;
+    color: #FFC760; /* Naranja suave */
+    font-size: 1em;
+    padding: 12px 25px;
+    background-color: #2C3E50; /* Fondo gris oscuro */
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  }
+  
+  #nav-bar a:hover {
+    background-color: #e0c249; /* Naranja dorado en hover */
+    color: #fff;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra más prominente */
+    transform: translateY(-2px); /* Efecto de elevación */
+  }
+    /* Formulario de búsqueda */
+    #search-section {
+      margin-top: 20px;
+    }
+
+    select, button {
+      padding: 10px;
+      font-size: 1.1em;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      width: 250px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background-color: #FFC760;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #D68910;
+    }
+
+    /* Contenedor de resultados de búsqueda */
+    #search-results {
+      margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .vehicle-result {
+      width: 280px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .vehicle-result:hover {
+      transform: translateY(-10px);
+    }
+
+    .vehicle-image {
+      width: 100%;
+      height: 200px;
+      object-fit: contain;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .technical-specs {
+      text-align: left;
+      margin-top: 15px;
+    }
+
+    .technical-specs ul {
+      list-style-type: none;
+    }
+
+    .technical-specs li {
+      margin-bottom: 5px;
+    }
+
+    /* Sección de Opiniones y Puntuación */
+    .vehicle-reviews {
+      background-color: #f9f9f9;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .review {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .review:last-child {
+      border-bottom: none;
+    }
+
+    .review p {
+      color: #555;
+    }
+
+    .rating {
+      font-size: 1.2em;
+      color: #e67e22;
+    }
+
+    .dealer-response {
+      font-style: italic;
+      color: #27ae60;
+    }
+
+    .dealer-rating {
+      font-size: 1.2em;
+      color: #27ae60;
+    }
+
+    .dealer-rating .rating {
+      color: #e67e22;
+      font-size: 1.5em;
+    }
+
+    /* Estilos de la simulación de costos */
+    .cost-simulation {
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .cost-simulation label {
+      font-size: 1.1em;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .cost-simulation input,
+    .cost-simulation select {
+      padding: 10px;
+      font-size: 1.1em;
+      width: 100%;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .cost-simulation button {
+      padding: 12px 20px;
+      background-color: #e67e22;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      width: 100%;
+    }
+
+    .cost-simulation button:hover {
+      background-color: #d68910;
+    }
+
+    .cost-simulation .result {
+      margin-top: 20px;
+      font-size: 1.2em;
+    }
+
+   /* Botón Home en la parte superior derecha */
+  #home-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 15px; /* Ajustamos el tamaño del botón */
+    background-color: #b58770;
+    color: white;
+    border: none;
+    font-size: 1.2em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: auto; /* Hacemos el ancho automático para que el botón no se extienda */
+  }
+
+  #home-btn:hover {
+    background-color: #34495e;
+  }
+  </style>
+</head>
+<body>
+
+  <!-- Botón Home en la parte superior derecha -->
+  <button id="home-btn" onclick="window.location.href='index.html'">Home</button>
+
+  <header>
+    <h1>Buscar Vehículos</h1>
+  </header>
+
+  <section id="search-section">
+    <select id="search-brand">
+      <option value="">Seleccione una marca</option>
+      <option value="Toyota">Toyota</option>
+      <option value="Honda">Honda</option>
+      <option value="Chevrolet">Chevrolet</option>
+      <option value="Mazda">Mazda</option>
+      <option value="Nissan">Nissan</option>
+      <option value="Renault">Renault</option>
+      <option value="Hyundai">Hyundai</option>
+      <option value="Kia">Kia</option>
+      <option value="Ford">Ford</option>
+      <option value="BMW">BMW</option>
+    </select>
+
+    <select id="search-model" disabled>
+      <option value="">Seleccione un modelo</option>
+    </select>
+
+    <select id="search-price" disabled>
+      <option value="">Seleccione un precio máximo</option>
+    </select>
+
+    <select id="search-year" disabled>
+      <option value="">Seleccione un año</option>
+    </select>
+
+    <button id="search-btn">Buscar</button>
+  </section>
+
+  <section id="search-results">
+    <!-- Los resultados de la búsqueda se mostrarán aquí -->
+  </section>
+
+  <script>
+    // Lista de vehículos disponibles
+    const vehicles = [
+      { brand: "Toyota", model: "Corolla", year: 2020, price: 70000000, image: "images/toyota_corolla.jpg", mileage: "50,000 km", legalStatus: "Legal", maintenance: "Full", accidents: "No" },
+      { brand: "Toyota", model: "Camry", year: 2020, price: 85000000, image: "images/toyota_camry.jpg", mileage: "30,000 km", legalStatus: "Legal", maintenance: "Full", accidents: "No" },
+      { brand: "Toyota", model: "Hilux", year: 2020, price: 95000000, image: "images/toyota_hilux.jpg", mileage: "70,000 km", legalStatus: "Legal", maintenance: "Full", accidents: "No" },
+      { brand: "Honda", model: "Civic", year: 2018, price: 55000000, image: "images/honda_civic.jpg", mileage: "60,000 km", legalStatus: "Legal", maintenance: "Full", accidents: "No" },
+      { brand: "Chevrolet", model: "Spark", year: 2021, price: 40000000, image: "images/chevrolet_spark.jpg", mileage: "10,000 km", legalStatus: "Legal", maintenance: "Full", accidents: "No" },
+      { brand: "Chevrolet", model: "Tracker", year: 2020, price: 70000000, image: "images/chevrolet_tracker.jpg", mileage: "30,000 km", legalStatus: "Legal", maintenance: "Full", accidents: "No" },
+      { brand: "Mazda", model: "3", year: 2019, price: 60000000, image: "images/mazda_3.jpg", mileage: "40,000 km", legalStatus: "Legal", maintenance: "Full", accidents: "No" },
+      { brand: "Nissan", model: "Sentra", year: 2017, price: 48000000, image: "images/nissan_sentra.jpg", mileage: "80,000 km", legalStatus: "Legal", maintenance: "Full", accidents: "No" },
+      { brand: "Nissan", model: "X-Trail", year: 2020, price: 75000000, image: "images/nissan_xtrail.jpg", mileage: "20,000 km", legalStatus: "Legal", maintenance: "Full", accidents: "No" },
+      { brand: "Renault", model: "Duster", year: 2020, price: 55500000, image: "images/renault_duster.jpg", mileage: "25,000 km", legalStatus: "Legal", maintenance: "Full", accidents: "No" },
+      { brand: "Hyundai", model: "Tucson", year: 2019, price: 65000000, image: "images/hyundai_tucson.jpg", mileage: "40,000 km", legalStatus: "Legal", maintenance: "Full", accidents: "No" },
+      { brand: "Hyundai", model: "Elantra", year: 2020, price: 67000000, image: "images/hyundai_elantra.jpg", mileage: "30,000 km", legalStatus: "Legal", maintenance: "Full", accidents: "No" },
+      { brand: "Kia", model: "Rio", year: 2020, price: 45000000, image: "images/kia_rio.jpg", mileage: "20,000 km", legalStatus: "Legal", maintenance: "Full", accidents: "No" },
+      { brand: "Ford", model: "EcoSport", year: 2018, price: 50000000, image: "images/ford_ecosport.jpg", mileage: "50,000 km", legalStatus: "Legal", maintenance: "Full", accidents: "No" },
+      { brand: "BMW", model: "X1", year: 2017, price: 120000000, image: "images/bmw_x1.jpg", mileage: "40,000 km", legalStatus: "Legal", maintenance: "Full", accidents: "No" },
+      { brand: "BMW", model: "X3", year: 2019, price: 160000000, image: "images/bmw_x3.jpg", mileage: "30,000 km", legalStatus: "Legal", maintenance: "Full", accidents: "No" }
+    ];
+
+    // Función para actualizar los modelos disponibles según la marca seleccionada
+    document.getElementById("search-brand").addEventListener("change", function() {
+      const brand = this.value;
+      const modelSelect = document.getElementById("search-model");
+      const priceSelect = document.getElementById("search-price");
+      const yearSelect = document.getElementById("search-year");
+
+      // Limpiar los desplegables de modelos, precio y año
+      modelSelect.innerHTML = `<option value="">Seleccione un modelo</option>`;
+      priceSelect.innerHTML = `<option value="">Seleccione un precio máximo</option>`;
+      yearSelect.innerHTML = `<option value="">Seleccione un año</option>`;
+
+      // Deshabilitar los desplegables de precio y año
+      priceSelect.disabled = true;
+      yearSelect.disabled = true;
+
+      if (brand) {
+        modelSelect.disabled = false;
+
+        vehicles.filter(vehicle => vehicle.brand === brand).forEach(vehicle => {
+          const option = document.createElement("option");
+          option.value = vehicle.model;
+          option.textContent = vehicle.model;
+          modelSelect.appendChild(option);
+        });
+      } else {
+        modelSelect.disabled = true;
+      }
+    });
+
+    // Llenar los desplegables de precio y año cuando se seleccione un modelo
+    document.getElementById("search-model").addEventListener("change", function() {
+      const model = this.value;
+      const priceSelect = document.getElementById("search-price");
+      const yearSelect = document.getElementById("search-year");
+
+      if (model) {
+        const selectedVehicle = vehicles.find(vehicle => vehicle.model === model);
+
+        priceSelect.innerHTML = `<option value="">Seleccione un precio máximo</option>`;
+        yearSelect.innerHTML = `<option value="">Seleccione un año</option>`;
+
+        const priceOption = document.createElement("option");
+        priceOption.value = selectedVehicle.price;
+        priceOption.textContent = "$" + selectedVehicle.price.toLocaleString();
+        priceSelect.appendChild(priceOption);
+
+        const yearOption = document.createElement("option");
+        yearOption.value = selectedVehicle.year;
+        yearOption.textContent = selectedVehicle.year;
+        yearSelect.appendChild(yearOption);
+
+        priceSelect.disabled = false;
+        yearSelect.disabled = false;
+      }
+    });
+
+    // Función de búsqueda
+    document.getElementById("search-btn").addEventListener("click", function() {
+      const brand = document.getElementById("search-brand").value;
+      const model = document.getElementById("search-model").value;
+      const maxPrice = parseInt(document.getElementById("search-price").value);
+      const year = parseInt(document.getElementById("search-year").value);
+
+      const filteredVehicles = vehicles.filter(vehicle => {
+        return (
+          (brand === "" || vehicle.brand === brand) &&
+          (model === "" || vehicle.model === model) &&
+          (isNaN(maxPrice) || vehicle.price <= maxPrice) &&
+          (isNaN(year) || vehicle.year === year)
+        );
+      });
+
+      const resultsContainer = document.getElementById("search-results");
+      resultsContainer.innerHTML = "";
+
+      if (filteredVehicles.length === 0) {
+        resultsContainer.innerHTML = "<p>No se encontraron vehículos con esos criterios.</p>";
+      } else {
+        filteredVehicles.forEach(vehicle => {
+          const div = document.createElement("div");
+          div.classList.add("vehicle-result");
+
+          div.innerHTML = `
+            <h3>${vehicle.brand} ${vehicle.model} (${vehicle.year})</h3>
+            <p>Precio: $${vehicle.price.toLocaleString()}</p>
+            <img src="${vehicle.image}" alt="${vehicle.model}" class="vehicle-image">
+            <div class="technical-specs">
+              <h4>Ficha Técnica</h4>
+              <ul>
+                <li>Kilometraje: ${vehicle.mileage}</li>
+                <li>Estado Legal: ${vehicle.legalStatus}</li>
+                <li>Mantenimiento: ${vehicle.maintenance}</li>
+                <li>Accidentes: ${vehicle.accidents}</li>
+              </ul>
+            </div>
+            <div class="reviews-section">
+              <h4>Opiniones de otros compradores</h4>
+              <div class="review">
+                <p>"¡Excelente vehículo! Muy cómodo y confiable. Lo recomiendo totalmente."</p>
+                <div class="rating">⭐⭐⭐⭐⭐</div>
+                <div class="date">Fecha: 15 de junio de 2023</div>
+                <div class="dealer-response">Respuesta del concesionario: ¡Gracias por tu comentario!</div>
+              </div>
+              <div class="review">
+                <p>"Buen rendimiento, pero el precio es un poco alto. Aún así, vale la pena."</p>
+                <div class="rating">⭐⭐⭐⭐</div>
+                <div class="date">Fecha: 10 de junio de 2023</div>
+              </div>
+            </div>
+            <div class="dealer-rating">
+              <div class="rating">⭐⭐⭐⭐⭐</div>
+              <div class="reviews">Basado en 50 reseñas</div>
+            </div>
+          `;
+          resultsContainer.appendChild(div);
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>

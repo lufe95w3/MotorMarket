@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentacion - MotorMarket</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Estilos generales */
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    header h1 {
+      font-size: 3em;
+      color: #b58770;
+      margin-bottom: 10px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    /* Sección de subida de documentos */
+    .upload-section {
+      background-color: #fff;
+      padding: 0px;
+      border-radius: 10px;
+      margin: 10px auto;
+      width: 80%;
+      max-width: 600px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .upload-section h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .upload-section label {
+      font-size: 1em;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .upload-section input[type="file"] {
+      display: block;
+      margin-bottom: 15px;
+    }
+
+    .upload-section button {
+      background-color: #FFC760;
+      color: white;
+      padding: 7px 20px;
+      border: none;
+      font-size: 1em;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+
+    .upload-section button:hover {
+      background-color: #D68910;
+    }
+
+    /* Estilos para la línea de tiempo */
+    .timeline {
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #fff;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 600px;
+      margin: 20px auto;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .timeline h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .timeline .step {
+      padding: 10px;
+      border-left: 5px solid #FFC760;
+      margin: 10px 0;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .timeline .step.completed {
+      border-left: 5px solid #27ae60;
+      background-color: #eafaf1;
+    }
+
+    .timeline .step p {
+      font-size: 1.1em;
+      color: #333;
+    }
+
+    .timeline .step span {
+      font-size: 1.1em;
+      color: #888;
+    }
+
+    /* Botón Home en la parte superior derecha */
+    #home-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 10px 20px;
+      background-color: #b58770;
+      color: white;
+      border: none;
+      font-size: 1.2em;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #home-btn:hover {
+      background-color: #34495e;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Documentacion - MotorMarket</h1>
+  </header>
+
+  <!-- Botón Home en la parte superior derecha -->
+  <button id="home-btn" onclick="window.location.href='index.html'">Home</button>
+
+  <!-- Sección de subida de documentos -->
+  <section class="upload-section">
+    <h2>Validación de Documentos</h2>
+    <form id="document-form">
+      <label for="runt">Subir documento RUNT:</label>
+      <input type="file" id="runt" name="runt" accept=".pdf,.jpg,.jpeg,.png" required>
+      
+      <label for="soat">Subir documento SOAT:</label>
+      <input type="file" id="soat" name="soat" accept=".pdf,.jpg,.jpeg,.png" required>
+
+      <button type="submit">Subir Documentos</button>
+    </form>
+  </section>
+
+  <!-- Sección de la línea de tiempo del proceso de compra -->
+  <section class="timeline">
+    <h2>Estado de validacion</h2>
+    <div id="timeline">
+      <div class="step" id="interest-step">
+        <p>Interés</p>
+        <span>Pendiente</span>
+      </div>
+      <div class="step" id="contact-step">
+        <p>Contacto</p>
+        <span>Pendiente</span>
+      </div>
+      <div class="step" id="documents-step">
+        <p>Documentos</p>
+        <span>Pendiente</span>
+      </div>
+      <div class="step" id="payment-step">
+        <p>Pago</p>
+        <span>Pendiente</span>
+      </div>
+      <div class="step" id="delivery-step">
+        <p>Entrega</p>
+        <span>Pendiente</span>
+      </div>
+    </div>
+  </section>
+
+  
+  <script>
+    // Función para actualizar la línea de tiempo
+    function updateTimelineStep(stepId, status) {
+      const step = document.getElementById(stepId);
+      if (status === 'completed') {
+        step.classList.add('completed');
+        step.querySelector('span').textContent = 'Completado';
+      } else {
+        step.classList.remove('completed');
+        step.querySelector('span').textContent = 'Pendiente';
+      }
+    }
+
+    // Función para validar la subida de documentos
+    document.getElementById('document-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const runtFile = document.getElementById('runt').files[0];
+      const soatFile = document.getElementById('soat').files[0];
+
+      if (runtFile && soatFile) {
+        alert('Documentos subidos correctamente.');
+
+        // Actualizamos la línea de tiempo
+        updateTimelineStep('interest-step', 'completed');
+        updateTimelineStep('contact-step', 'completed');
+        updateTimelineStep('documents-step', 'completed');
+
+        // Mostramos el botón de "Iniciar Proceso de Compra"
+        document.getElementById('purchase-btn').style.display = 'block';
+      } else {
+        alert('Por favor, sube ambos documentos (RUNT y SOAT).');
+      }
+    });
+  </script>
+
+</body>
+</html>
